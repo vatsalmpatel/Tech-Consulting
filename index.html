@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedCap Tech Consulting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        :root {
+            --primary: #3a86ff;
+            --secondary: #8338ec;
+            --light: #f8f9fa;
+            --dark: #2d3748;
+            --gray: #718096;
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            padding: 25px 0;
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .main {
+            padding: 100px 0;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 4rem;
+            max-width: 600px;
+        }
+        
+        .purpose-section {
+            background: white;
+            border-radius: 12px;
+            padding: 60px;
+            margin-bottom: 80px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            bottom: -8px;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .purpose-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .purpose-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .purpose-text p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        .purpose-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .purpose-image {
+            flex: 1;
+            min-width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.1), rgba(131, 56, 236, 0.1));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+        
+        .feature-list {
+            margin-top: 30px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            margin-top: 3px;
+            flex-shrink: 0;
+            fill: url(#gradient);
+        }
+        
+        .feature-text {
+            color: var(--gray);
+        }
+        
+        .feature-text strong {
+            color: var(--dark);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+        
+        .team-member {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+        
+        .photo-placeholder {
+            height: 320px;
+            background: linear-gradient(135deg, #f5f7fa, #e2e8f0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .team-info {
+            padding: 30px;
+        }
+        
+        .team-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .team-name:after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            bottom: -8px;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        .team-specialty {
+            color: var(--gray);
+            margin-top: 15px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(58, 134, 255, 0.3);
+        }
+        
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, rgba(58, 134, 255, 0.03), rgba(131, 56, 236, 0.03));
+            padding: 60px 0;
+            border-radius: 24px;
+            margin-bottom: 80px;
+            text-align: center;
+        }
+        
+        .section-inner {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .contact-header {
+            margin-bottom: 40px;
+        }
+        
+        .contact-header h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .contact-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-email {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            margin-top: 20px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .contact-email:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+        
+        .email-icon {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+        }
+        
+        footer {
+            background-color: #ffffff;
+            padding: 40px 0;
+            text-align: center;
+            color: var(--gray);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .team, .purpose-content {
+                flex-direction: column;
+            }
+            
+            .team-member, .purpose-text, .purpose-image {
+                min-width: 100%;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .main {
+                padding: 60px 0;
+            }
+            
+            .purpose-section {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">RedCap Tech Consulting</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="main">
+        <div class="container">
+            <h1>Expert Tech Consulting</h1>
+            <p class="subtitle">Innovative solutions for your business challenges in the modern technological landscape</p>
+            
+            <section class="purpose-section">
+                <h2 class="section-title">Our Purpose</h2>
+                <div class="purpose-content">
+                    <div class="purpose-text">
+                        <p>At RedCap Tech Consulting, we specialize in transforming the operational capabilities of small to mid-size banks. We understand the unique challenges facing regional and community financial institutions in today's rapidly evolving digital landscape.</p>
+                        
+                        <p>Our mission is to empower banks with tailored technology solutions that enhance operational efficiency, strengthen security protocols, and deliver seamless customer experiences—all while navigating complex regulatory requirements.</p>
+                        
+                        <p>We excel in advanced data engineering and analytics solutions for financial institutions, developing sophisticated PD and LGD models that enhance risk assessment capabilities. Our team provides end-to-end services including data migration and model validation. We implement data warehousing strategies that transform your raw financial data into actionable intelligence, helping you make better-informed decisions.</p>
+
+                        <p>We leverage cutting-edge data engineering tools including Apache Airflow, Prefect, and Snowflake to build robust, scalable data pipelines that transform raw financial data into valuable insights. Our technical stack enables efficient ETL processes, real-time data processing, and comprehensive data governance frameworks tailored to financial institutions. For risk model development, we implement sophisticated techniques including machine learning-based probability of default (PD) models, loss given default (LGD) calculations, and stress testing frameworks that incorporate both traditional statistical methods and advanced approaches such as gradient boosting, neural networks, and survival analysis.</p>
+                        
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <defs>
+                                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                            <stop offset="0%" stop-color="var(--primary)" />
+                                            <stop offset="100%" stop-color="var(--secondary)" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.25 16.518l-4.5-4.319 1.396-1.435 3.078 2.937 6.105-6.218 1.421 1.409-7.5 7.626z"/>
+                                </svg>
+                                <div class="feature-text">
+                                    <strong>Core Banking System Optimization</strong>
+                                    Streamline your legacy systems and integrate modern solutions for improved performance and reduced operational costs.
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.25 16.518l-4.5-4.319 1.396-1.435 3.078 2.937 6.105-6.218 1.421 1.409-7.5 7.626z"/>
+                                </svg>
+                                <div class="feature-text">
+                                    <strong>Digital Transformation</strong>
+                                    Build competitive mobile and online banking experiences that meet evolving customer expectations.
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <svg class="feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.25 16.518l-4.5-4.319 1.396-1.435 3.078 2.937 6.105-6.218 1.421 1.409-7.5 7.626z"/>
+                                </svg>
+                                <div class="feature-text">
+                                    <strong>Risk Model Development</strong>
+                                    Custom PD and LGD models that enhance credit risk assessment capabilities while ensuring regulatory compliance.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="team">
+                <div class="team-member">
+                    <div class="photo-placeholder">
+                        <img src="./static/vatsal_img.JPEG" alt="vatsal_img" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="team-info">
+                        <h2 class="team-name">Vatsal Patel</h2>
+                        <p class="team-specialty">Vatsal is a data engineering and AI specialist who transforms business operations through innovative technical solutions. He expertly leverages cloud platforms like AWS, Azure, and Snowflake alongside Python, Airflow, and PySpark to build high-performance data pipelines that significantly reduce costs and query times. With advanced skills in PyTorch, TensorFlow, and modern data stack tools including dbt, Docker, and Kubernetes, Vatsal implements sophisticated machine learning models and recommendation systems that deliver measurable impact. His versatile expertise spanning data engineering, GenAI, and Large Language Models enables him to architect comprehensive solutions to complex data challenges across industries.</p>
+                        
+                        <div class="social-links">
+                            <a target="_blank" href="https://www.linkedin.com/in/vatsalmpatel/" class="social-link" title="LinkedIn">
+                                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                            <a target="_blank" href="https://github.com/vatsalmpatel" class="social-link" title="GitHub">
+                                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                            <a href="mailto:vatsalmpatel@gmail.com" class="social-link" title="Email">
+                                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="photo-placeholder">
+                        <img src="./static/rajas_img.jpg" alt="rajas_img" style="width: 80%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="team-info">
+                        <h2 class="team-name">Rajas Pandey</h2>
+                        <p class="team-specialty">Points about Rajas and his skills go here</p>
+                        
+                        <div target="_blank" class="social-links">
+                            <a href="https://www.linkedin.com/in/rajas-pandey/" class="social-link" title="LinkedIn">
+                                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                </svg>
+                            </a>
+                            <a target="_blank" href="https://github.com/rajaspandey" class="social-link" title="GitHub">
+                                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </a>
+                            <a href="mailto:rajaspandey9@gmail.com" class="social-link" title="Email">
+                                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="contact-section">
+                <div class="section-inner">
+                    <div class="contact-header">
+                        <h2>Contact Us</h2>
+                        <p>Reach out using the above links to discuss how we can help transform your financial institution with tailored technology solutions.</p>
+                    </div>
+                    
+                    <!-- <a href="mailto:team@RedCaptechconsulting.com" class="contact-email">
+                        <svg class="email-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--primary)">
+                            <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
+                        </svg>
+                        team@RedCaptechconsulting.com
+                    </a> -->
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 RedCap Tech Consulting. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
