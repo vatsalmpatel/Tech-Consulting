@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RedCap Tech Consulting</title>
+    <title>Altvis Tech Consulting</title>
     <style>
         * {
             margin: 0;
@@ -34,7 +34,7 @@
         }
         
         header {
-            padding: 25px 0;
+            padding: 20px 0;
             background-color: #ffffff;
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             position: sticky;
@@ -42,7 +42,20 @@
             z-index: 100;
         }
         
-        .logo {
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+            object-fit: contain;
+        }
+        
+        .logo-text {
             font-size: 24px;
             font-weight: 700;
             color: var(--dark);
@@ -360,6 +373,10 @@
             .purpose-section {
                 padding: 40px 30px;
             }
+            
+            .logo-container {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -367,7 +384,11 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">RedCap Tech Consulting</a>
+                <a href="#" class="logo-container">
+                    <!-- Replaced the old SVG logo with the new image logo -->
+                    <img class="logo-image" src="./static/logo.png" alt="Altvis Logo">
+                    <span class="logo-text">Altvis Tech Consulting</span>
+                </a>
             </nav>
         </div>
     </header>
@@ -381,7 +402,7 @@
                 <h2 class="section-title">Our Purpose</h2>
                 <div class="purpose-content">
                     <div class="purpose-text">
-                        <p>At RedCap Tech Consulting, we specialize in transforming the operational capabilities of small to mid-size banks. We understand the unique challenges facing regional and community financial institutions in today's rapidly evolving digital landscape.</p>
+                        <p>At Altvis Tech Consulting, we specialize in transforming the operational capabilities of small to mid-size banks. We understand the unique challenges facing regional and community financial institutions in today's rapidly evolving digital landscape.</p>
                         
                         <p>Our mission is to empower banks with tailored technology solutions that enhance operational efficiency, strengthen security protocols, and deliver seamless customer experiences—all while navigating complex regulatory requirements.</p>
                         
@@ -494,13 +515,6 @@
                         <h2>Contact Us</h2>
                         <p>Reach out using the above links to discuss how we can help transform your financial institution with tailored technology solutions.</p>
                     </div>
-                    
-                    <!-- <a href="mailto:team@RedCaptechconsulting.com" class="contact-email">
-                        <svg class="email-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="var(--primary)">
-                            <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
-                        </svg>
-                        team@RedCaptechconsulting.com
-                    </a> -->
                 </div>
             </section>
         </div>
@@ -508,7 +522,7 @@
     
     <footer>
         <div class="container">
-            <p>&copy; 2025 RedCap Tech Consulting. All rights reserved.</p>
+            <p>&copy; 2025 Altvis Tech Consulting. All rights reserved.</p>
         </div>
     </footer>
 </body>
